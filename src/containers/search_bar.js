@@ -27,12 +27,11 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
-      <h1>Search for a startup</h1>
       <form onSubmit={this.onFormSubmit} className="input-group">
       <input
-        placeholder="Search company url"
+        placeholder="Enter a url (ex: convergevp.com)"
         className="form-control"
-        value={this.state.term}
+        value={this.state.url}
         onChange={this.onInputChange} />
       <span className="input-group-btn">
         <button type="submit" className="btn btn-secondary">Submit</button>

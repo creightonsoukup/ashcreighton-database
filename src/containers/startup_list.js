@@ -28,17 +28,15 @@ class StartupList extends Component {
       const round = ''
       const date = ''
       const lead = ''
-
+      console.log(name)
       return (
         <div>
-        test
+          <h1>{facebook}</h1>
         </div>
       )
     } else {
       return (
         <div>
-          <h2>Results</h2>
-          <div>Please search for a related startup</div>
         </div>
       )
     }

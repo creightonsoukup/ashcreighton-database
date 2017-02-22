@@ -11,7 +11,7 @@ class Portfolio extends Component {
     return (
       <div>
         test
-        <Link to={`/portfolio/new/${id}`}>Portfolio</Link>
+        <Link to={`/portfolio/new/${id}`}>Add Portfolio Comapny</Link>
       </div>
     )
   }

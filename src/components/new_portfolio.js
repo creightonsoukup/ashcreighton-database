@@ -8,6 +8,7 @@ export default class NewPortfolio extends Component {
   render() {
     return (
       <div>
+        <h2>New Portfolio Company</h2>
         <SearchBar />
         <StartupList />
       </div>
