@@ -36,14 +36,26 @@ class CompanyList extends Component {
               <p> Investment Range High: {vc.investment_range_high}</p>
             </div>
             <div className="card-action">
-              <a href="#">Portfolio</a>
+              <Link to={`/portfolio/${vc.id}`}>Portfolio</Link>
               <a href="#">Edit</a>
               <a href='#'>Website</a>
             </div>
           </div>
         )})
       } else {
-        return <div> Loading... </div>
+        return (
+          <div className="preloader-wrapper big active">
+            <div className="spinner-layer spinner-blue-only">
+              <div className="circle-clipper left">
+                <div className="circle"></div>
+              </div><div className="gap-patch">
+                <div className="circle"></div>
+              </div><div className="circle-clipper right">
+                <div className="circle"></div>
+              </div>
+            </div>
+          </div>
+        )
       }
   }
 

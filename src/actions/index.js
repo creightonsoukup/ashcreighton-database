@@ -7,6 +7,7 @@ export const FETCH_COMPANIES ='fetch_companies'
 export const FETCH_VCS = 'fetch_vcs'
 export const FETCH_VC = 'fetch_vc'
 export const UPDATE_VC = 'update_vc'
+export const FETCH_PORTFOLIO = 'fetch_portfolio'
 
 export function fetchCompanies(searchterm) {
   const url = `${ROOT_URL}/${searchterm}`;
@@ -45,6 +46,16 @@ export function fetchVC (id) {
 
    return {
      type: UPDATE_VC,
+     payload: request
+   }
+ }
+
+ export function fetchPortfolio (id) {
+   const url = `${DATABASE_URL}/portfolio/${id}`
+   const request = axios.get(url)
+
+   return {
+     type: FETCH_PORTFOLIO,
      payload: request
    }
  }
