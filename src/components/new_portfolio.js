@@ -10,7 +10,7 @@ export default class NewPortfolio extends Component {
       <div>
         <h2>New Portfolio Company</h2>
         <SearchBar />
-        <StartupList />
+        <StartupList id={this.props.params.id}/>
       </div>
     )
   }

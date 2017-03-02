@@ -8,6 +8,7 @@ export const FETCH_VCS = 'fetch_vcs'
 export const FETCH_VC = 'fetch_vc'
 export const UPDATE_VC = 'update_vc'
 export const FETCH_PORTFOLIO = 'fetch_portfolio'
+export const ADD_PORTFOLIO = 'add_portfolio'
 
 export function fetchCompanies(searchterm) {
   const url = `${ROOT_URL}/${searchterm}`;
@@ -40,7 +41,8 @@ export function fetchVC (id) {
    }
  }
 
- export function updateVC (id, props) {
+ export function updateVC (props) {
+   console.log(props)
    const url = `${DATABASE_URL}/vc/${id}`
    const request = axios.post(url)
 
@@ -58,4 +60,27 @@ export function fetchVC (id) {
      type: FETCH_PORTFOLIO,
      payload: request
    }
+ }
+
+ export function addPortfolio (id, name,
+   facebook, twitter, linkedin, description, city, state, website, vertical) {
+  // const url = `${DATABASE_URL}/add/:id`
+  const url = 'http://localhost:3000/portfolio/add'
+  const request = axios.post(url, {
+    id: id,
+    name: name,
+    facebook: facebook,
+    twitter: twitter,
+    linkedin: linkedin,
+    description: description,
+    city: city,
+    state: state,
+    website: website,
+    vertical: vertical
+  })
+
+  return {
+    type: ADD_PORTFOLIO,
+    payload: request
+  }
  }

@@ -37,7 +37,7 @@ class CompanyList extends Component {
             </div>
             <div className="card-action">
               <Link to={`/portfolio/${vc.id}`}>Portfolio</Link>
-              <Link to={`/vc/edit/${vc.id}`}>Edit</Link>
+              <Link vc={vc} to={`/vc/edit/${vc.id}`}>Edit</Link>
               <a href='#'>Website</a>
             </div>
           </div>
