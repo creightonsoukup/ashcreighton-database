@@ -4,7 +4,6 @@ import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import _$ from 'jquery';
 import { addPortfolio } from '../actions/index'
-import { Select, Option } from 'react-materialize'
 
 
 class StartupList extends Component {
@@ -39,8 +38,7 @@ class StartupList extends Component {
     this.twitter.value, this.linkedin.value, this.description.value, this.city_name.value,
     this.region.value, this.website.value, this.vertical.value)
       .then((data) => {
-        console.log(data)
-        this.context.router.push(`/portfolio/${this.props.id}`)
+        this.context.router.push(`/startups`)
       })
   }
 
@@ -144,10 +142,10 @@ class StartupList extends Component {
                 </div>
                 <div className='input-field col s12 m7'>
                   <label className='active'>Verticle</label>
-                  <input
+                  <select
                   name='verticle'
                   type='text'
-                  ref={(vertical) => this.vertical = vertical} />
+                  ref={(vertical) => this.vertical = vertical} ></select>
                 </div>
                 <div className="input-group-btn col s12 m7">
                   <button type="submit" className="btn btn-secondary">Add To Database</button>

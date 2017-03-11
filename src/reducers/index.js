@@ -5,6 +5,8 @@ import VCReducer from './reducer_vc';
 import PortfolioReducer from './reducer_portfolio'
 import { reducer as formReducer } from 'redux-form';
 import AddPortfolioReducer from './reducer_add_portfolio'
+import GetAllStartupsReducer from './reducer_all_startups'
+import FilterStartupReducer from './reducer_filter_startup'
 
 const rootReducer = combineReducers({
   startup: StartupReducer,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
   vc: VCReducer,
   updateVC: formReducer,
   portfolio: PortfolioReducer,
-  addPortfolio: AddPortfolioReducer
+  addPortfolio: AddPortfolioReducer,
+  allStartups: GetAllStartupsReducer,
+  filterStartup: FilterStartupReducer
 });
 
 export default rootReducer;

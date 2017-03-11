@@ -6,6 +6,7 @@ import ReduxPromise from 'redux-promise';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import reducers from './reducers';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 

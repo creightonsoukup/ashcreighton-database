@@ -9,6 +9,9 @@ export const FETCH_VC = 'fetch_vc'
 export const UPDATE_VC = 'update_vc'
 export const FETCH_PORTFOLIO = 'fetch_portfolio'
 export const ADD_PORTFOLIO = 'add_portfolio'
+export const GET_ALL_STARTUPS = 'get_all_startups'
+export const FILTER_STARTUPS = 'filter_startups'
+export const ADD_INVESTMENT = 'add_investment'
 
 export function fetchCompanies(searchterm) {
   const url = `${ROOT_URL}/${searchterm}`;
@@ -41,19 +44,32 @@ export function fetchVC (id) {
    }
  }
 
- export function updateVC (props) {
-   console.log(props)
-   const url = `${DATABASE_URL}/vc/${id}`
-   const request = axios.post(url)
+  export function updateVC (id, name,
+     facebook, twitter, linkedin, description, city, state, website, vertical) {
+    // const url = `${DATABASE_URL}/add/:id`
+    const url = `${DATABASE_URL}/vc/${id}`
+    const request = axios.post(url, {
+      id: id,
+      name: name,
+      facebook: facebook,
+      twitter: twitter,
+      linkedin: linkedin,
+      description: description,
+      city: city,
+      state: state,
+      website: website,
+      vertical: vertical
+    })
 
-   return {
-     type: UPDATE_VC,
-     payload: request
-   }
- }
+    return {
+      type: UPDATE_VC,
+      payload: request
+    }
+  }
 
  export function fetchPortfolio (id) {
-   const url = `${DATABASE_URL}/portfolio/${id}`
+  //  const url = `${DATABASE_URL}/portfolio/${id}`
+   const url = `http://localhost:3000/portfolio/${id}`
    const request = axios.get(url)
 
    return {
@@ -84,3 +100,37 @@ export function fetchVC (id) {
     payload: request
   }
  }
+
+ export function addInvestment(vcId, startupId,
+ round, date, lead) {
+   const url = 'http://localhost:3000/portfolio/investment/add'
+   const request = axios.post(url, {
+     vcId: vcId,
+     startupId: startupId,
+     round: round,
+     date: date,
+     lead: lead
+   })
+
+   return {
+     type: ADD_INVESTMENT,
+     payload: request
+   }
+ }
+
+ export function fetchStartups() {
+   const url = 'http://localhost:3000/startup/all'
+   const request = axios.get(url)
+
+   return {
+     type: GET_ALL_STARTUPS,
+     payload: request
+   }
+ }
+
+export function filterStartups(terms) {
+  return {
+    type: FILTER_STARTUPS,
+    payload: terms
+  }
+}

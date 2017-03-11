@@ -1,22 +1,24 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/app'
-import CompanySearch from './containers/company_search'
+import App from './page_components/app'
 import SearchBar from './containers/search_bar'
 import StartupList from './containers/startup_list'
-import CompanyList from './containers/company_list'
-import VCIndex from './components/index';
+import VCs from './page_components/vc';
 import EditVC from './components/edit_vc';
-import Portfolio from './containers/portfolio'
+import Portfolio from './page_components/portfolio'
 import NewPortfolio from './components/new_portfolio'
+import ConnectPortfolio from './page_components/connect_portfolio'
+import Startups from './page_components/startups'
 
 export default (
   <Route path='/' component={App}>
-    <IndexRoute component={VCIndex} />
-    <Route path='/vc/new' component={CompanyList} />
+    <IndexRoute component={VCs} />
+    <Route path='/vc' component={VCs} />
     <Route path='/vc/edit/:id' component={EditVC} />
     <Route path='/portfolio/:id' component={Portfolio} />
-    <Route path='/portfolio/new/:id' component={NewPortfolio} />
+    <Route path='/startup/new' component={NewPortfolio} />
+    <Route path='/portfolio/add/:id' component={ConnectPortfolio} />
+    <Route path='/startups' component={Startups} />
   </Route>
 );
