@@ -30,6 +30,7 @@
   "dependencies": {
     "async": "^2.1.5",
     "axios": "^0.15.3",
+    "babel-core": "^6.24.0",
     "babel-preset-stage-1": "^6.1.18",
     "body-parser": "^1.17.1",
     "bootstrap": "^4.0.0-alpha.6",
