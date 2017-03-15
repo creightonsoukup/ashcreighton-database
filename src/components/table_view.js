@@ -19,7 +19,7 @@ class TableView extends Component {
 
   render() {
 
-    if(this.props.data.length == 0) {
+    if(this.props.data.length == 0 || !this.props.data) {
       <div>loading</div>
     }
     const columns = this.props.columns

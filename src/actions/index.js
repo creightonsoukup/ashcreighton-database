@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const ROOT_URL='https://mysterious-waters-75101.herokuapp.com/companies'
-const DATABASE_URL ='https://guarded-cove-22538.herokuapp.com'
+const DATABASE_URL ='https://murmuring-mesa-87304.herokuapp.com'
 
 export const FETCH_COMPANIES ='fetch_companies'
 export const FETCH_VCS = 'fetch_vcs'
@@ -46,7 +46,6 @@ export function fetchVC (id) {
 
   export function updateVC (id, name,
      facebook, twitter, linkedin, description, city, state, website, vertical) {
-    // const url = `${DATABASE_URL}/add/:id`
     const url = `${DATABASE_URL}/vc/${id}`
     const request = axios.post(url, {
       id: id,
@@ -68,8 +67,7 @@ export function fetchVC (id) {
   }
 
  export function fetchPortfolio (id) {
-  //  const url = `${DATABASE_URL}/portfolio/${id}`
-   const url = `http://localhost:3000/portfolio/${id}`
+   const url = `${DATABASE_URL}/portfolio/${id}`
    const request = axios.get(url)
 
    return {
@@ -79,8 +77,8 @@ export function fetchVC (id) {
  }
 
  export function addPortfolio (id, row) {
-  // const url = `${DATABASE_URL}/add/:id`
-  const url = 'http://localhost:3000/portfolio/add'
+  const url = `${DATABASE_URL}/portfolio/add`
+  // const url = 'http://localhost:3000/portfolio/add'
   const request = axios.post(url, {
     id: id,
     name: row.name,
@@ -103,7 +101,8 @@ export function fetchVC (id) {
  }
 
  export function addInvestment(data) {
-   const url = 'http://localhost:3000/portfolio/investment/add'
+   const url = `${DATABASE_URL}/portfolio/investment/add`
+  //  const url = 'http://localhost:3000/portfolio/investment/add'
    const request = axios.post(url, data)
 
    return {
@@ -113,7 +112,8 @@ export function fetchVC (id) {
  }
 
  export function fetchStartups() {
-   const url = 'http://localhost:3000/startup/all'
+   const url = `${DATABASE_URL}/startup/all`
+  //  const url = 'http://localhost:3000/startup/all'
    const request = axios.get(url)
 
    return {
