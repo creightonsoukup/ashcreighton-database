@@ -77,8 +77,7 @@ export function fetchVC (id) {
  }
 
  export function addPortfolio (id, row) {
-  // const url = `${DATABASE_URL}/portfolio/add`
-   const url = 'http://localhost:3000/portfolio/add'
+  const url = `${DATABASE_URL}/portfolio/add`
   const request = axios.post(url, {
     id: id,
     name: row.name,
@@ -112,7 +111,6 @@ export function fetchVC (id) {
 
  export function fetchStartups() {
    const url = `${DATABASE_URL}/startup/all`
-  //  const url = 'http://localhost:3000/startup/all'
    const request = axios.get(url)
 
    return {
