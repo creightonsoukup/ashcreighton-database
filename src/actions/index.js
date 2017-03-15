@@ -78,21 +78,22 @@ export function fetchVC (id) {
    }
  }
 
- export function addPortfolio (id, name,
-   facebook, twitter, linkedin, description, city, state, website, vertical) {
+ export function addPortfolio (id, row) {
   // const url = `${DATABASE_URL}/add/:id`
   const url = 'http://localhost:3000/portfolio/add'
   const request = axios.post(url, {
     id: id,
-    name: name,
-    facebook: facebook,
-    twitter: twitter,
-    linkedin: linkedin,
-    description: description,
-    city: city,
-    state: state,
-    website: website,
-    vertical: vertical
+    name: row.name,
+    facebook: row.facebook,
+    twitter: row.twitter,
+    linkedin: row.linkedin,
+    description: row.description,
+    city: row.city,
+    state: row.state,
+    website: row.website,
+    domain: row.domain,
+    profile_image: row.profile_image,
+    country: row.country
   })
 
   return {
@@ -101,16 +102,9 @@ export function fetchVC (id) {
   }
  }
 
- export function addInvestment(vcId, startupId,
- round, date, lead) {
+ export function addInvestment(data) {
    const url = 'http://localhost:3000/portfolio/investment/add'
-   const request = axios.post(url, {
-     vcId: vcId,
-     startupId: startupId,
-     round: round,
-     date: date,
-     lead: lead
-   })
+   const request = axios.post(url, data)
 
    return {
      type: ADD_INVESTMENT,

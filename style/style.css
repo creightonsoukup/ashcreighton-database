@@ -5,3 +5,20 @@
 .brand-logo {
   margin-left: 8px;
 }
+
+.butt {
+  position: absolute;;
+  right: 25px;
+}
+
+.searchbar {
+  margin-top: 20px;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.connect_portfolio {
+  margin-top: 20px;
+}

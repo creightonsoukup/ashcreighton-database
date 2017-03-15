@@ -1,34 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Row, Input, Form, FormGroup, FormText, Button } from 'reactstrap'
 
 
 export default class GeneralSearchBar extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {term: ''}
+  }
+
+  onInputChange(term) {
+    this.setState({term})
+    this.props.onSearchTermChange(term)
   }
 
   render() {
     return (
-      <div >
-      <nav>
-        <div className="nav-wrapper row">
-          <form className="col s6">
-            <div>
-              <div className="input-field">
-                <input id="search" type="search" required />
-                <label className="label-icon" for="search"><i className="material-icons">search</i></label>
-                <i className="material-icons">close</i>
-              </div>
-            </div>
-          </form>
-          <ul right className="right col s3">
-            <li><button
-            onClick={this.props.onClick}
-            className="waves-effect waves-light btn-large">Add New {this.props.button}</button></li>
-          </ul>
-        </div>
-      </nav>
+      <div className="searchbar">
+        <Row>
+            {this.props.showButton === true &&
+              <Button className='butt'
+                onClick={this.props.onClick}>
+                {this.props.button}
+              </Button>
+            }
+        </Row>
       </div>
     )
   }
 }
+
+// <Form sm='3'>
+//   <FormGroup>
+//     <Input
+//       name="search"
+//       placeholder={this.props.placeholder}
+//       value={this.state.term}
+//       onChange={event => this.onInputChange(event.target.value)} />
+//   </FormGroup>
+// </Form>

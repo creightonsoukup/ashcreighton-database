@@ -25,17 +25,14 @@ class TableView extends Component {
     const columns = this.props.columns
     const rows = this.props.data
     const rowGetter = rowNumber => rows[rowNumber]
-    const onRowSelect = rows => this.setState({ selectedRows: rows})
+    const onRowSelect = rows => this.props.getRowSelection(rows)
     const onCellSelected = ({ rowIdx, idx }) => this.refs.grid.openCellEditor(rowIdx,idx)
     const handleGridRowsUpdated = row => this.setState({editRows: row})
-    // const onRowClick = row => this.setState({clickedRow: row})
     const onRowClick = (rowIdx, row) => {
-      let selectedVCId = this.props.data[rowIdx].id
-      this.context.router.push(`/portfolio/${selectedVCId}`)
+      this.props.onRowClick(rowIdx, row)
     }
-    console.log(this.state)
     return (
-    <div>
+    <div className="table">
       <ReactDataGrid
       ref='grid'
       rowKey='id'
@@ -46,7 +43,7 @@ class TableView extends Component {
       enableCellSelect={true}
       onRowSelect={onRowSelect}
       onGridRowsUpdated={handleGridRowsUpdated}
-      minHeight={600}
+      minHeight={this.props.height}
       onRowClick={onRowClick}
       />
     </div>

@@ -4,6 +4,7 @@ import { fetchStartups } from '../actions/index'
 
 
 import StartupDatabaseSearch from '../containers/startup_database_search'
+import GeneralSearchBar from '../containers/general_searchbar'
 import TableView from '../components/table_view'
 import Navbar from '../components/navbar'
 
@@ -29,7 +30,7 @@ class Startups extends Component {
   }
 
   render() {
-    if(this.props.allStartups == 0) {
+    if(this.props.allStartups.length == 0) {
       return <div>loading</div>
     }
     const startups = this.props.allStartups[0]
@@ -102,8 +103,10 @@ class Startups extends Component {
     return (
       <div>
         <Navbar />
+        <GeneralSearchBar />
         <TableView
           data={startups}
+          height={600}
           columns={columns}
           select={'single'}/>
       </div>

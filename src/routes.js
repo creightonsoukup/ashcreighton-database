@@ -8,7 +8,7 @@ import VCs from './page_components/vc';
 import EditVC from './components/edit_vc';
 import Portfolio from './page_components/portfolio'
 import NewPortfolio from './components/new_portfolio'
-import ConnectPortfolio from './page_components/connect_portfolio'
+import ConnectPortfolio from './components/connect_portfolio'
 import Startups from './page_components/startups'
 
 export default (
