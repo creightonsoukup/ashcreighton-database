@@ -33,10 +33,7 @@ class Portfolio extends Component {
 
 
   render() {
-    if(!this.props.vc) {
-      return <div></div>
-    }
-    if(this.props.vc.length == 0) {
+    if(this.props.vc.length == 0 || !this.props.vc)  {
       return <div>loading...</div>
     }
     const vc = this.props.vc[0][0]

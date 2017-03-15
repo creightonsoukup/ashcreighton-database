@@ -71,6 +71,7 @@ class ConnectPortfolio extends Component {
   }
 
   addPortfolio(id, row) {
+    console.log(id, row)
     this.props.addPortfolio(id, row)
       .then((data) => {
         data.payload.status == 200 ? this.postSuccess(data) :
