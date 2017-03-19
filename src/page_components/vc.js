@@ -121,6 +121,13 @@ class VCs extends Component {
       width: 200
     },
     {
+      key: 'last_fund_date',
+      name: 'Last Fund Date',
+      resizable: true,
+      editable: true,
+      width: 200
+    },
+    {
       key: 'investments_last_twelve',
       name: 'Investments Last Twelve',
       resizable: true,
