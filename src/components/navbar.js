@@ -27,7 +27,7 @@ export default class Navigation extends Component {
     return (
       <Navbar color='faded' light toggleable>
         <NavbarToggler onClick={this.toggle} />
-        <NavbarBrand href='/'>Database</NavbarBrand>
+        <NavbarBrand href='/'>{this.props.title}</NavbarBrand>
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className='ml-auto' navbar>
             <NavItem>

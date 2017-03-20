@@ -34,7 +34,7 @@ class Portfolio extends Component {
 
   render() {
     if(this.props.vc.length === 0 || this.props.portfolio.length === 0)  {
-      return <div>loading...</div>
+      return <div className='loader'>Loading...</div>
     }
     const vc = this.props.vc[0][0]
     const id = this.props.params.id

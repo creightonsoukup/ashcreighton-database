@@ -5,6 +5,7 @@ const DATABASE_URL ='https://murmuring-mesa-87304.herokuapp.com'
 
 export const FETCH_COMPANIES ='fetch_companies'
 export const FETCH_VCS = 'fetch_vcs'
+export const DELETE_VCS = 'delete_vcs'
 export const FETCH_VC = 'fetch_vc'
 export const UPDATE_VC = 'update_vc'
 export const FETCH_PORTFOLIO = 'fetch_portfolio'
@@ -62,6 +63,19 @@ export function fetchVC (id) {
 
     return {
       type: UPDATE_VC,
+      payload: request
+    }
+  }
+
+  export function deleteVCs(rows) {
+    // const url = `${DATABASE_URL}/vc/delete`
+    const url = 'localhost:3000/vc/delete'
+    const request = axios.post(url, {
+      rows: rows
+    })
+
+    return {
+      type: DELETE_VCS,
       payload: request
     }
   }

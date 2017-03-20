@@ -31,7 +31,7 @@ class Startups extends Component {
 
   render() {
     if(this.props.allStartups.length == 0) {
-      return <div>loading</div>
+      return <div className='loader'>Loading...</div>
     }
     const startups = this.props.allStartups[0]
     const columns = [{
@@ -102,7 +102,8 @@ class Startups extends Component {
     }]
     return (
       <div>
-        <Navbar />
+        <Navbar
+        title={'Startup Database'}/>
         <GeneralSearchBar />
         <TableView
           data={startups}

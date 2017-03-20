@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import ReactDataGrid from 'react-data-grid'
+import { Toolbar, Editors, Formatters, Selectors }  from 'react-data-grid-addons';
+
 
 class TableView extends Component {
   static contextTypes = {
@@ -39,8 +41,10 @@ class TableView extends Component {
       enableRowSelect={this.props.select}
       columns={columns}
       rowsCount={rows.length}
+      onAddFilter={this.handleFilterChange}
       rowGetter={rowGetter}
-      enableCellSelect={true}
+      enableCellSelect={this.props.rowSelect}
+      toolbar={<Toolbar enableFilter={this.props.filterable}  onAddRow={this.handleAddRow} enableAddRow={this.props.addRow}/>}
       onRowSelect={onRowSelect}
       onGridRowsUpdated={handleGridRowsUpdated}
       minHeight={this.props.height}
