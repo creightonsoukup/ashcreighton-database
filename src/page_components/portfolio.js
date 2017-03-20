@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchPortfolio, fetchVC } from '../actions/index'
+import { fetchPortfolio, fetchVC, deleteInvestments } from '../actions/index'
 import Navbar from '../components/navbar'
 import GeneralSearchBar from '../containers/general_searchbar'
 import TableView from '../components/table_view'
 import AddPortfolioCompany from '../components/connect_portfolio'
-import { Collapse } from 'reactstrap'
+import { Collapse, Button } from 'reactstrap'
 
 class Portfolio extends Component {
   static contextTypes = {
@@ -15,10 +15,12 @@ class Portfolio extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      collapse: false
+      collapse: false,
+      selectedRows: []
     }
 
     this.clickToCollapse = this.clickToCollapse.bind(this)
+    this.getRowSelection = this.getRowSelection.bind(this)
   }
 
   componentWillMount(props) {
@@ -30,6 +32,14 @@ class Portfolio extends Component {
     this.setState({collapse: !this.state.collapse})
   }
 
+  getRowSelection(rows) {
+    this.setState({selectedRows: rows})
+  }
+
+  removeFromPortfolio() {
+    this.props.deleteInvestments(this.state.selectedRows)
+    this.setState({selectedRows: []})
+  }
 
 
   render() {
@@ -137,12 +147,27 @@ class Portfolio extends Component {
               collapse={this.clickToCollapse}/>
           </div>
         </Collapse>
-        <TableView
-         data={portfolio}
-         height={600}
-         onRowClick={() => {return null}}
-         columns={columns}
-         select={"single"}/>
+        { this.state.editable && (
+          <div>
+            <Button onClick={this.deleteStartups}>Delete</Button>
+            <TableView
+             data={portfolio}
+             onRowClick={null}
+             height={800}
+             getRowSelection={this.getRowSelection}
+             onRowClick={() => {return null}}
+             columns={columns}
+             select={"multi"}/>
+          </div>
+        )}
+        { this.state.editable === false  &&
+          <TableView
+           data={portfolio}
+           height={600}
+           onRowClick={() => {return null}}
+           columns={columns}
+           select={null}/>
+        }
       </div>
     )
   }
@@ -152,4 +177,4 @@ function mapStateToProps({portfolio, vc}) {
   return { portfolio, vc }
 }
 
-export default connect(mapStateToProps, { fetchPortfolio, fetchVC })(Portfolio)
+export default connect(mapStateToProps, { fetchPortfolio, fetchVC, deleteInvestments })(Portfolio)

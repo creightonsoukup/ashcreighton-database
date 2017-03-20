@@ -48,7 +48,6 @@ class VCs extends Component {
   }
 
   deleteVCs() {
-    console.log('hi')
     this.props.deleteVCs(this.state.selectedRows)
     this.setState({selectedRows: []})
   }

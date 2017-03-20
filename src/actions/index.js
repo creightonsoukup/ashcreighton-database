@@ -13,6 +13,7 @@ export const ADD_PORTFOLIO = 'add_portfolio'
 export const GET_ALL_STARTUPS = 'get_all_startups'
 export const FILTER_STARTUPS = 'filter_startups'
 export const ADD_INVESTMENT = 'add_investment'
+export const DELETE_INVESTMENTS = 'delete_investments'
 
 export function fetchCompanies(searchterm) {
   const url = `${ROOT_URL}/${searchterm}`;
@@ -68,14 +69,25 @@ export function fetchVC (id) {
   }
 
   export function deleteVCs(rows) {
-    // const url = `${DATABASE_URL}/vc/delete`
-    const url = 'localhost:3000/vc/delete'
+    const url = `${DATABASE_URL}/vc/delete`
     const request = axios.post(url, {
       rows: rows
     })
 
     return {
       type: DELETE_VCS,
+      payload: request
+    }
+  }
+
+  export function deleteInvestments(rows) {
+    const url = `${DATABASE_URL}/portfolio/delete`
+    const request = axios.post(url, {
+      rows: rows
+    })
+
+    return {
+      type: DELETE_INVESTMENTS,
       payload: request
     }
   }
